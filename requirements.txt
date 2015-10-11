@@ -1,3 +1,10 @@
+Django==1.7
+dj-database-url==0.3.0
+dj-static==0.0.6
+gunicorn==19.1.1
+psycopg2==2.5.1
 shippo==1.1.0
+static==0.4
 stripe==1.11.0
 whitenoise==2.0.4
+wsgiref==0.1.2
