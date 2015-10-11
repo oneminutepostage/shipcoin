@@ -18,11 +18,27 @@ function sendRateRequest(url, data){
         complete: function(data){
         	buyTable.show();
         	rateLoadingImage.hide();
-        	if (data.responseText && data.responseText != "None"){
+        	if (data.responseText){
 				displayRateResult(data.responseText);
 			} else {
 				displayRateError();
 			}
+        }
+	});
+}
+
+function sendLabelRequest(token){
+	url = "/label/";
+	data = JSON.stringify({
+		token: token,
+		rate_object_id: rateObjectId
+	};
+	$.ajax({
+        url : url,
+        type: "POST",
+        data : data,
+        complete: function(data){
+        	console.log(data);
         }
 	});
 }

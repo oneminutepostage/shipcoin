@@ -16,9 +16,13 @@ $(".changes_rates_field").on('change', function(){
 });
 
 function displayRateResult(data){
+	var data = JSON.parse(data);
+	var amount = data.amount;
+	var object_id = data.object_id;
+	rateObjectId = object_id;
 	rateButton.hide();
 	buyButton.show();
-	ratePrice.html("$"+data);
+	ratePrice.html("$"+amount);
 }
 
 function displayRateError(){

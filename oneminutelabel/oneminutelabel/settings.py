@@ -70,9 +70,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Logging
 
@@ -112,6 +113,8 @@ LOGGING = {
     }
 }
 
-# Shippo Token
+# API Tokens
 
 SHIPPO_TOKEN = None
+STRIPE_TOKEN = None
+STRIPE_DESCRIPTION = "One Minute Label Postage"

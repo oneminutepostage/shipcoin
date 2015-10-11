@@ -53,5 +53,13 @@ def rate(request):
     }
     service = request.POST.get("service")
     rate = shippo_requestor.get_rate(address_from, address_to, package, service)
-    amount = rate.amount if rate else None
-    return HttpResponse(amount, status="200")
+    response = ""
+    if rate is not None:
+        response = {
+            "object_id": rate.object_id,
+            "amount": rate.amount
+        }
+        response = json.dumps(response);
+    return HttpResponse(response, status="200")
+
+#request.POST['stripeToken']
