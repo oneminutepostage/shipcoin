@@ -1,0 +1,96 @@
+{% load staticfiles %}
+<div id="label_header">
+	<table width="100%">
+		<tr>
+			<td id="label_header_service_letter" width="25%">
+				P
+			</td>
+			<td id="label_header_text" width="50%">
+				<b>US POSTAGE AND FEES PAID
+				<br><span id="label_header_text_service">PRIORITY MAIL</span></b>
+				<br>Sep 24 2015
+				<br>Mailed from ZIP <span id="label_header_zip"></span>
+				<br><span id="label_header_text_rate">Priority Mail</span> Rate
+			</td>
+			<td id="label_header_barcode" width="25%">
+				<img src="{% static 'img/barcode.svg' %}" id="label_header_barcode_image">
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="label_service_header">
+	PRIORITY MAIL
+</div>
+
+<div>
+	<table width="100%">
+		<tr>
+			<td width="60%" id="label_ship_from">
+				<b>SHIP FROM:</b>
+                <div class="form-group has-success">
+                    <input type="text" id="fromName" name="fromName" class="form-control" placeholder="First and last name" required>
+                    <input type="text" id="fromStreet1" name="fromStreet1" class="form-control" placeholder="Street address" required>
+                    <input type="text" id="fromStreet2" name="fromStreet2" class="form-control" placeholder="Apartment, unit, street 2">
+                    <table>
+                    	<tr>
+                    		<td width="50%" style="padding-right: 5px;">
+                    			<input type="text" class="form-control" id="fromCity" name="fromCity" placeholder="City" required>
+                    		</td>
+                    		<td width="23%" style="padding-right: 5px;">
+		            			<select class="form-control changes_rates_field" id="fromState" name="fromState">
+						            <option selected disabled hidden value=''>State</option>
+						            <option>CA</option>
+						            <option>NY</option>
+						        </select>
+		            		</td>
+		            		<td width="27%">
+		            			<input type="text" class="form-control changes_rates_field" id="fromZip" name="fromZip" placeholder="ZIP" required>
+		            		</td>
+                    	</tr>
+                    </table>
+                </div>
+			</td>
+			<td width="40%" id="label_references">
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="label_ship_to">
+	<div style="width:60%">
+		<b>SHIP TO:</b>
+        <div class="form-group has-success">
+            <input type="text" name="toName" class="form-control" placeholder="First and last name" required>
+            <input type="text" name="toStreet1" class="form-control" placeholder="Street address" required>
+            <input type="text" name="toStreet2" class="form-control" placeholder="Apartment, unit, street 2">
+            <table>
+            	<tr>
+            		<td width="50%" style="padding-right: 5px;">
+            			<input type="text" class="form-control" name="toCity" placeholder="City" required>
+            		</td>
+            		<td width="23%" style="padding-right: 5px;">
+            			<select class="form-control changes_rates_field" name="toState">
+				            <option selected disabled hidden value=''>State</option>
+				            <option>CA</option>
+				            <option>NY</option>
+				        </select>
+            		</td>
+            		<td width="27%">
+            			<input type="text" class="form-control changes_rates_field" name="toZip" placeholder="ZIP" required>
+            		</td>
+            	</tr>
+            </table>
+        </div>
+	</div>
+</div>
+
+<div id="label_tracking_title">
+	USPS TRACKING #
+</div>
+<div>
+	<img src="{% static 'img/barcode_2d.svg' %}" id="label_tracking_barcode">
+</div>
+<div id="label_tracking_number">
+	9405 5108 9868 0007 7412 64
+</div>

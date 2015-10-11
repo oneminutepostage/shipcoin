@@ -1,0 +1,119 @@
+<div class="panel panel-info">
+    <div class="panel-heading">1. Pick a service</div>
+    <div class="panel-body">
+        <div class="form-group">
+		    <div class="radio radio-success radio-margin-20">
+		        <label>
+		            <input class="changes_rates_field" type="radio" name="service" id="priority" value="priority" checked="">
+		            <span class="circle"></span><span class="check"></span>
+		            Priority Mail
+		        </label>
+		    </div>
+		    <div class="radio radio-success radio-margin-20">
+		        <label>
+		            <input class="changes_rates_field" type="radio" name="service" id="express" value="express">
+		            <span class="circle"></span><span class="check"></span>
+		            Priority Mail Express
+		        </label>
+		    </div>
+		    <div class="radio radio-success radio-margin-20">
+			    <label>
+			        <input class="changes_rates_field" type="radio" name="service" id="first" value="first">
+			        <span class="circle"></span><span class="check"></span>
+			        First Class
+			    </label>
+			</div>
+		</div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">2. Enter packaging</div>
+    <div class="panel-body">
+        <div class="form-group">
+		    <div class="radio radio-success radio-margin-20">
+		        <label>
+		            <input class="changes_rates_field" type="radio" id="own_packaging" name="packaging" value="own_packaging" checked="">
+		            <span class="circle"></span><span class="check"></span>
+		            Own Packaging
+		        </label>
+		    </div>
+		    <div id="own_packaging_choices" style="padding-left: 45px">
+		    	<table>
+		    		<tr>
+		    			<td>
+					    	<div class="form-group has-success">
+					    		<table>
+					    			<tr>
+					    				<td class="dims_table">
+					            			<input type="number" class="form-control text-center changes_rates_field" id="packageLength" name="packageLength" style="width:30px" required>
+					            		</td>
+					            		<td class="dims_table">
+					            			x
+					            		</td>
+					            		<td class="dims_table">
+					            			<input type="number" class="form-control text-center changes_rates_field" id="packageWidth" name="packageWidth" style="width:30px" required>
+					            		</td>
+					            		<td class="dims_table">
+					            			x
+					            		</td>
+					            		<td class="dims_table">
+					            			<input type="number" class="form-control text-center changes_rates_field" id="packageHeight" name="packageHeight" style="width:30px" required>
+					            		</td>
+					            		<td>
+					            			inch
+					            		</td>
+					            	</tr>
+					            </table>
+					            <small style="color:grey">dimensions</small>
+					        </div>
+					    </td>
+					    <td>
+					    	<div class="form-group has-success" style="margin-left: 45px">
+					    		<table>
+					    			<tr>
+					    				<td>
+					    					<input type="number" class="form-control text-center changes_rates_field" id="packageWeight" name="packageWeight" style="width:30px">
+					    				</td>
+					    				<td>
+							                <select class="form-control changes_rates_field" name="packageWeightUnit" id="packageWeightUnit">
+							                    <option>lb</option>
+							                    <option>oz</option>
+							                </select>
+							            </td>
+							        </tr>
+							    </table>
+					    		<small style="color:grey">weight</small>
+					    	</div>
+					    </td>
+					</tr>
+				</table>
+		    </div>
+		    <div class="radio radio-success radio-margin-20">
+		        <label>
+		            <input class="changes_rates_field" type="radio" name="packaging" value="flat_rate">
+		            <span class="circle"></span><span class="check"></span>
+		            Flat Rate Packaging
+		        </label>
+		    </div>
+		    <div id="flat_rate_choices" style="padding-left: 45px; display: none;">
+		    	<div class="form-group has-success">
+			    	<select class="form-control changes_rates_field" id="flatRateOptions" name="flatRateOptions" style="width: 250px">
+			            <option>Flat Rate Box Small</option>
+			            <option>Flat Rate Box Medium</option>
+			            <option>Flat Rate Box Large</option>
+			            <option>Flat Rate Envelope</option>
+			            <option>Flat Rate Envelope - padded</option>
+			        </select>
+		        	<small style="color:grey">box type</small>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">3. Enter addresses</div>
+    <div class="panel-body">
+    	Enter the sender and recipient address directly in the label.
+    </div>
+</div>

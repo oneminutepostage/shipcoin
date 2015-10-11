@@ -8,97 +8,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Bootstrap CSS & JS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<!-- Material design -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
 	<!-- Core style -->
     <link rel="stylesheet" href="{% static "css/style.css" %}?v=0.0.1" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="container text-center">
-		<h1>One Minute Label</h1>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
-				<div id="label_outer">
-					
-					<div id="label_header">
-						<table width="100%">
-							<tr>
-								<td id="label_header_service_letter" width="25%">
-									P
-								</td>
-								<td id="label_header_text" width="50%">
-									<b>US POSTAGE AND FEES PAID
-									<br>PRIORITY MAIL</b>
-									<br>Sep 24 2015
-									<br>Mailed from ZIP 95122
-									<br>Priority Mail Rate
-								</td>
-								<td id="label_header_barcode" width="25%">
-									<img src="{% static 'img/barcode.svg' %}" id="label_header_barcode_image">
-								</td>
-							</tr>
-						</table>
-					</div>
-
-					<div id="label_service_header">
-						PRIORITY MAIL
-					</div>
-					
-					<div>
-						<table width="100%">
-							<tr>
-								<td width="60%" id="label_ship_from">
-									<b>SHIP FROM:</b>
-									<form class="bs-component">
-			                            <div class="form-group">
-			                                <input type="text" class="form-control" id="inputEmail" placeholder="First and last name">
-			                                <input type="text" class="form-control" id="inputEmail" placeholder="Street address">
-			                                <input type="text" class="form-control" id="inputEmail" placeholder="Apartment, unit, street 2">
-			                                <input type="text" class="form-control" id="inputEmail" placeholder="City, state, zip code">
-			                            </div>
-									</form>
-								</td>
-								<td width="40%" id="label_references">
-									<br>
-									<input type="text" class="form-control" id="inputEmail" placeholder="Reference 1" size="20">
-									<input type="text" class="form-control" id="inputEmail" placeholder="Reference 2" size="20">
-								</td>
-							</tr>
-						</table>
-					</div>
-
-					<div id="label_ship_to">
-						<div style="width:60%">
-							<b>SHIP TO:</b>
-							<form class="bs-component">
-		                        <div class="form-group">
-		                            <input type="text" class="form-control" id="inputEmail" placeholder="First and last name">
-		                            <input type="text" class="form-control" id="inputEmail" placeholder="Street address">
-		                            <input type="text" class="form-control" id="inputEmail" placeholder="Apartment, unit, street 2">
-		                            <input type="text" class="form-control" id="inputEmail" placeholder="City, state, zip code">
-		                        </div>
-							</form>
-						</div>
-					</div>
-
-					<div id="label_tracking_title">
-						USPS TRACKING #
-					</div>
-					<div>
-						<img src="{% static 'img/barcode_2d.svg' %}" id="label_tracking_barcode">
-					</div>
-					<div id="label_tracking_number">
-						9405 5108 9868 0007 7412 64
-					</div>
-
+	<div class="container">
+		<div id="content_outer" class="row">
+			<form id="labelForm" method="get" action="">
+			<div class="col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">
+				<div id="label_outer" class="text-center">
+					{% include 'label.html' %}
 				</div>
 			</div>
+			
+			<div class="col-md-6 hidden-sm hidden-xs">
+				{% include 'choices.html' %}
+				</form>
+				{% include 'buy.html' %}
+			</div>
+
+			<div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+				</form>
+				{% include 'buy.html' %}
+			</div>
+
 		</div>
 	</div>
 </body>
 <footer>
+	<script src="{% static "js/fields.js" %}?v=0.0.1"></script>
+	<script src="{% static "js/api.js" %}?v=0.0.1"></script>
+	<script src="{% static "js/validator.js" %}?v=0.0.1"></script>
+	<script src="{% static "js/cookie.js" %}?v=0.0.1"></script>
+	<script src="{% static "js/ux.js" %}?v=0.0.1"></script>
+	<script src="{% static "js/label.js" %}?v=0.0.1"></script>
+	<script src="{% static "js/jquery.validate.min.js" %}?v=0.0.1"></script>
 </footer>
 </html>

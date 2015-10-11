@@ -72,3 +72,46 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[%(asctime)s] [%(process)-6d-%(thread)-13d] [%(pathname)-70s:%(lineno)-5d] [%(levelname)-8s] --- %(message)s',
+        }
+    },
+    'handlers': {
+        'null': {
+            'level': 'INFO',
+            'class': 'django.utils.log.NullHandler',
+            'formatter': 'verbose'
+        },
+        'console':{
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO'
+        },
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'requests': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+        },
+    }
+}
+
+# Shippo Token
+
+SHIPPO_TOKEN = "7b3e2b9f03a5464e438b2e42a75076831362e6ec"

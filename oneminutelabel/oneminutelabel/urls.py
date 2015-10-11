@@ -5,5 +5,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'oneminutelabel.views.home', name='home'),
+    url(r'^rate/$', 'oneminutelabel.views.rate', name='rate'),
     url(r'^admin/', include(admin.site.urls)),
 )

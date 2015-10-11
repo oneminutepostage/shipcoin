@@ -2,13 +2,26 @@ html, body {
 	font-family: 'Lato', sans-serif;
 }
 
+.radio-margin-20 {
+	margin-bottom: 20px;
+}
+
+#content_outer {
+	margin-top: 30px;
+}
+
 #label_outer {
 	-webkit-box-shadow: 0px 0px 4px 1px rgba(189,189,189,1);
 	-moz-box-shadow: 0px 0px 4px 1px rgba(189,189,189,1);
 	box-shadow: 0px 0px 4px 1px rgba(189,189,189,1);
-	margin-top: 30px;
 	overflow: auto;
 	background-color: #fff;
+}
+
+.input-error{
+	animation: input-highlight .5s forwards;
+	border-color: #a94442;
+    background-image: linear-gradient(#a94442,#a94442),linear-gradient(#d2d2d2,#d2d2d2);
 }
 
 /**********************************************************/
@@ -85,4 +98,10 @@ html, body {
 	padding-bottom:5px;
 	border-bottom: 2px solid #808080;	
 	margin-bottom:10px;
+}
+
+/**********************************************************/
+
+.dims_table {
+	padding-right: 5px;
 }
