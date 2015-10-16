@@ -20,6 +20,7 @@ function displayRateResult(data){
 	var amount = data.amount;
 	var object_id = data.object_id;
 	rateObjectId = object_id;
+	rateAmount = amount;
 	rateButton.hide();
 	buyButton.show();
 	ratePrice.html("$"+amount);
@@ -30,4 +31,12 @@ function displayRateError(){
 	buyButton.hide();
 	ratePrice.html(" ");
 	alert("We couldn't find any rates - please try again or change your package information.");
+}
+
+function displayLabelResult(data){
+	console.log(data);
+}
+
+function displayLabelError(data){
+	console.log(data);
 }

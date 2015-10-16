@@ -4,6 +4,8 @@
 	{% load staticfiles %}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Anonymously purchase discounted USPS shipping labels with Bitcoin.">
+	<title>Shipcoin | USPS shipping labels paid with Bitcoin</title>
 	<!-- use the latest IE rendering mdoe -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Bootstrap CSS & JS -->
@@ -23,6 +25,10 @@
 </head>
 <body>
 	<div class="container">
+		<div class="text-center">
+			<h1>Shipcoin</h1>
+			<p>Anonymously purchase discounted USPS shipping labels with Bitcoin.</p>
+		</div>
 		<div id="content_outer" class="row">
 			<form id="labelForm" method="get" action="">
 			<div class="col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">
@@ -42,6 +48,9 @@
 				{% include 'buy.html' %}
 			</div>
 
+		</div>
+		<div class="text-center" style="padding: 60px 0 20px 0; color: grey">
+			<p>powered by the <a href="https://goshippo.com" target="blank" title="Shippo USPS shipping API">Shippo USPS shipping API</a></p>
 		</div>
 	</div>
 </body>

@@ -4,8 +4,7 @@ var handler = StripeCheckout.configure({
   locale: 'auto',
   bitcoin: true,
   token: function(token) {
-    // Use the token to create the charge with a server-side script.
-    // You can access the token ID with `token.id`
+    sendLabelRequest(token);
   }
 });
 
@@ -14,7 +13,7 @@ $('#buy_button_stripe').on('click', function(e) {
   handler.open({
     name: 'One Minute Label',
     description: 'Instant shipping label purchase',
-    amount: 2000
+    amount: (rateAmount*100)
   });
   e.preventDefault();
 });

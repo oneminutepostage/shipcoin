@@ -32,13 +32,18 @@ function sendLabelRequest(token){
 	data = JSON.stringify({
 		token: token,
 		rate_object_id: rateObjectId
-	};
+	});
 	$.ajax({
         url : url,
         type: "POST",
         data : data,
         complete: function(data){
         	console.log(data);
+        	if (data.responseText){
+				displayRateResult(data.responseText);
+			} else {
+				displayRateError();
+			}
         }
 	});
 }

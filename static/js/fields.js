@@ -36,3 +36,4 @@ var ratePrice = $("#rate_price");
 var buyTable = $("#buy-table");
 var rateLoadingImage = $("#rate-loading-image");
 var rateObjectId = null;
+var rateAmount = null;
