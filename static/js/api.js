@@ -29,10 +29,10 @@ function sendRateRequest(url, data){
 
 function sendLabelRequest(token){
 	url = "/label/";
-	data = JSON.stringify({
+	data = {
 		token: token,
 		rate_object_id: rateObjectId
-	});
+	};
 	$.ajax({
         url : url,
         type: "POST",

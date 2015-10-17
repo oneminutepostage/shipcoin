@@ -26,6 +26,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oneminutelabel',
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,6 +111,14 @@ LOGGING = {
         'requests': {
             'handlers': ['console'],
             'level': 'ERROR',
+        },
+        'shippo': {
+            'handlers': ['console'],
+            'level': 'WARNING',
+        },
+        'stripe': {
+            'handlers': ['console'],
+            'level': 'WARNING',
         },
     }
 }

@@ -4,7 +4,7 @@ var handler = StripeCheckout.configure({
   locale: 'auto',
   bitcoin: true,
   token: function(token) {
-    sendLabelRequest(token);
+    sendLabelRequest(token.id);
   }
 });
 

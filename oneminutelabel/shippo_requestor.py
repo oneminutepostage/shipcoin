@@ -14,7 +14,11 @@ def get_rates(address_from, address_to, package):
         parcel = package 
     )
     log.info("Received Shippo Shipment object_id %s" % shipment.object_id)
-    return shippo.Shipment.get_rates(shipment.object_id, sync=True)
+    try:
+        return shippo.Shipment.get_rates(shipment.object_id, sync=True)
+    except Exception as ex:
+        log.warning("Shippo connection failed: %s" % ex)
+        return None
 
 def get_rate(address_from, address_to, package, service):
     shippo_service = map_service(service)
@@ -40,3 +44,10 @@ def map_service(service):
         "express": "Priority Mail Express"
     }
     return mapping[service] if service in mapping else None
+
+def get_label(object_id):
+    try:
+        return shippo.Transaction.create(rate=object_id, sync=True)
+    except Exception as ex:
+        log.warning("Shippo connection failed: %s" % ex)
+        return None

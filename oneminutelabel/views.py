@@ -4,7 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 import logging
 import json
 
+import models
+import helpers
 import shippo_requestor
+import stripe_requestor
 
 log = logging.getLogger(__name__)
 
@@ -16,45 +19,16 @@ def home(request):
 @require_POST
 def rate(request):
     log.info("Received rate request")
-    address_from = {
-        "name": request.POST.get("fromName"),
-        "street1": request.POST.get("fromStreet1"),
-        "street2": request.POST.get("fromStreet2"),
-        "city": request.POST.get("fromCity"),
-        "state": request.POST.get("fromState"),
-        "zip": request.POST.get("fromZip"),
-        "country": "US",
-        "email": "oneminutelabel@gmail.com",
-        "object_purpose": "PURCHASE"
-    }
-    address_to = {
-        "name": request.POST.get("toName"),
-        "street1": request.POST.get("toStreet1"),
-        "street2": request.POST.get("toStreet2"),
-        "city": request.POST.get("toCity"),
-        "state": request.POST.get("toState"),
-        "zip": request.POST.get("toZip"),
-        "country": "US",
-        "email": "oneminutelabel@gmail.com",
-        "object_purpose": "PURCHASE"
-    }
-    if request.POST.get("packaging") == "flat_rate":
-        package_template = request.POST.get("flatRateOptions")
-    else:
-        package_template = None
-    package = {
-        "length": request.POST.get("packageLength", "1"),
-        "width": request.POST.get("packageWidth", "1"),
-        "height": request.POST.get("packageHeight", "1"),
-        "distance_unit": "in",
-        "weight": request.POST.get("packageWeight"),
-        "mass_unit": request.POST.get("packageWeightUnit"),
-        "template": package_template
-    }
-    service = request.POST.get("service")
+    address_from, address_to, package, service = helpers.get_objects_from_request(request)
+    log.info("Sending rate request to Shippo")
     rate = shippo_requestor.get_rate(address_from, address_to, package, service)
+    log.info("Selected rate from Shippo: %s" % rate)
     response = ""
     if rate is not None:
+        models.Rate.objects.create(
+            amount = rate.amount,
+            shippo_object_id = rate.object_id
+            )
         response = {
             "object_id": rate.object_id,
             "amount": rate.amount
@@ -62,4 +36,30 @@ def rate(request):
         response = json.dumps(response);
     return HttpResponse(response, status="200")
 
-#request.POST['stripeToken']
+@csrf_exempt
+@require_POST
+def label(request):
+    token = request.POST.get("token")
+    rate_object_id = request.POST.get("rate_object_id")
+    log.info("Received label request for rate id %s" % rate_object_id)
+    rate = models.Rate.objects.get(shippo_object_id=rate_object_id)
+    shippo_label = shippo_requestor.get_label(rate.shippo_object_id)
+    if shippo_label is not None and shippo_label.object_status == "SUCCESS":
+        label = models.Label.objects.create(
+            rate = rate,
+            amount = rate.amount,
+            shippo_object_id = shippo_label.object_id,
+            tracking_number = shippo_label.tracking_number,
+            label_url = shippo_label.label_url
+            )
+        charged = stripe_requestor.charge(token, rate.amount)
+        if charged:
+            log.info("Label %s successfully purchased" % label.shippo_object_id)
+            return HttpResponse("", status="200")
+        else:
+            log.warning("Failed to charge on Stripe")
+            return HttpResponse("", status="200")
+    else:
+        log.warning("Label creation failed: %s" % shippo_label)
+        return HttpResponse("", status="200")
+
