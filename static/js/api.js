@@ -47,6 +47,7 @@ function sendLabelRequest(token){
         data : data,
         complete: function(data){
         	hideLoadingGraphic();
+        	console.log(data);
         	if (data.status == 200 && data.responseText){
 				displayLabelResult(data.responseText);
 			} else {

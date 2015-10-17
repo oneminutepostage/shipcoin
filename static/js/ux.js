@@ -48,7 +48,12 @@ function displayLabelResult(data){
 function displayLabelError(data){
 	var data = JSON.parse(data);
 	if (data){
-		alert(data);
+		error = data.error;
+		if( typeof error === 'string' ) {
+			alert(error);
+		} else {
+			alert(data.error[0].text);
+		}
 	} else {
 		alert("Unknown error");
 	}
