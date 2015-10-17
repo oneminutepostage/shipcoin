@@ -10,9 +10,7 @@ packaging_group.on('change', function() {
 });
 
 $(".changes_rates_field").on('change', function(){
-	rateButton.show();
-	buyButton.hide();
-	ratePrice.html(" ");
+	hideRateFields();
 });
 
 function displayRateResult(data){
@@ -26,17 +24,32 @@ function displayRateResult(data){
 	ratePrice.html("$"+amount);
 }
 
-function displayRateError(){
+function hideRateFields(){
 	rateButton.show();
 	buyButton.hide();
 	ratePrice.html(" ");
+}
+
+function displayRateError(){
+	hideRateFields();
 	alert("We couldn't find any rates - please try again or change your package information.");
 }
 
 function displayLabelResult(data){
-	console.log(data);
+	var data = JSON.parse(data);
+	labelUrlButton.attr("href", data.label_url);
+	labelTrackingNumber.text(data.tracking_number);
+	var usps_link = "https://tools.usps.com/go/TrackConfirmAction.action?tLabels=" + data.tracking_number;
+	UspsTrackingUrl.attr("href", usps_link);
+	labelModal.modal('show');
+	hideRateFields();
 }
 
 function displayLabelError(data){
-	console.log(data);
+	var data = JSON.parse(data);
+	if (data){
+		alert(data);
+	} else {
+		alert("Unknown error");
+	}
 }

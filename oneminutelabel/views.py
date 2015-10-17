@@ -33,7 +33,7 @@ def rate(request):
             "object_id": rate.object_id,
             "amount": rate.amount
         }
-        response = json.dumps(response);
+        response = json.dumps(response)
     return HttpResponse(response, status="200")
 
 @csrf_exempt
@@ -54,12 +54,18 @@ def label(request):
             )
         charged = stripe_requestor.charge(token, rate.amount)
         if charged:
+            response = {
+                "label_url": shippo_label.label_url,
+                "tracking_number": shippo_label.tracking_number
+            }
             log.info("Label %s successfully purchased" % label.shippo_object_id)
-            return HttpResponse("", status="200")
+            return HttpResponse(json.dumps(response), status="200")
         else:
             log.warning("Failed to charge on Stripe")
-            return HttpResponse("", status="200")
+            response = { "error": "We couldn't charge you for this label. Please verify your payment information and try again." }
+            return HttpResponse(json.dumps(response), status="400")
     else:
         log.warning("Label creation failed: %s" % shippo_label)
-        return HttpResponse("", status="200")
+        response = { "error": shippo_label.messages }
+        return HttpResponse(json.dumps(response), status="400")
 

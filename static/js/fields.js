@@ -37,3 +37,8 @@ var buyTable = $("#buy-table");
 var rateLoadingImage = $("#rate-loading-image");
 var rateObjectId = null;
 var rateAmount = null;
+// LABEL
+var labelModal = $("#labelModal");
+var labelUrlButton = $("#labelUrlButton");
+var labelTrackingNumber = $("#labelTrackingNumber");
+var UspsTrackingUrl = $("#UspsTrackingUrl");

@@ -5,9 +5,17 @@ function getRate(){
 		return null;
 	}
 	var data = labelForm.serialize();
+	showLoadingGraphic();
+    sendRateRequest("/rate/", data);
+}
+
+function showLoadingGraphic(){
 	buyTable.hide();
     rateLoadingImage.show();
-    sendRateRequest("/rate/", data);
+}
+function hideLoadingGraphic(){
+	buyTable.show();
+    rateLoadingImage.hide();
 }
 
 function sendRateRequest(url, data){
@@ -16,8 +24,7 @@ function sendRateRequest(url, data){
         type: "POST",
         data : data,
         complete: function(data){
-        	buyTable.show();
-        	rateLoadingImage.hide();
+        	hideLoadingGraphic();
         	if (data.responseText){
 				displayRateResult(data.responseText);
 			} else {
@@ -33,16 +40,17 @@ function sendLabelRequest(token){
 		token: token,
 		rate_object_id: rateObjectId
 	};
+	showLoadingGraphic();
 	$.ajax({
         url : url,
         type: "POST",
         data : data,
         complete: function(data){
-        	console.log(data);
-        	if (data.responseText){
-				displayRateResult(data.responseText);
+        	hideLoadingGraphic();
+        	if (data.status == 200 && data.responseText){
+				displayLabelResult(data.responseText);
 			} else {
-				displayRateError();
+				displayLabelError(data.responseText);
 			}
         }
 	});
