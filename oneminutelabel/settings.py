@@ -102,8 +102,8 @@ TEMPLATE_CONTEXT_PROCESSORS = ( 'oneminutelabel.context_processors.access_settin
                                 'django.core.context_processors.media',
                                 'django.core.context_processors.static',
                                 'django.core.context_processors.tz',
-                                'django.contrib.messages.context_processors.messages',
-                                'django_settings_export.settings_export' )
+                                'django.contrib.messages.context_processors.messages'
+                             )
 
 # API Tokens
 SHIPPO_TOKEN = os.getenv("SHIPPO_TOKEN")
