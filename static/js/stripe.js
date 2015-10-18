@@ -1,5 +1,5 @@
 var handler = StripeCheckout.configure({
-  key: 'pk_test_EGy5lvIR91G9LihccXJ6fewV',
+  key: stripe_publishable_token,
   image: '/static/img/shipcoin.png',
   locale: 'auto',
   bitcoin: true,

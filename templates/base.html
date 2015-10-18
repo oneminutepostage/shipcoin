@@ -79,6 +79,9 @@
 	{% include 'label-modal.html' %}
 </body>
 <footer>
+	<script>
+		stripe_publishable_token = "{{ STRIPE_PUBLISHABLE_TOKEN }}";
+	</script>
 	<script src="{% static "js/fields.js" %}?v=0.0.1"></script>
 	<script src="{% static "js/api.js" %}?v=0.0.1"></script>
 	<script src="{% static "js/validator.js" %}?v=0.0.1"></script>
