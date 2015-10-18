@@ -46,8 +46,19 @@ def map_service(service):
     return mapping[service] if service in mapping else None
 
 def get_label(object_id):
+    log.info("Calling Shippo")
+    shippo.api_key = settings.SHIPPO_TOKEN
     try:
         return shippo.Transaction.create(rate=object_id, sync=True)
+    except Exception as ex:
+        log.warning("Shippo connection failed: %s" % ex)
+        return None
+
+def refund_label(object_id):
+    log.info("Calling Shippo")
+    shippo.api_key = settings.SHIPPO_TOKEN
+    try:
+        return shippo.Refund.create(transaction=object_id)
     except Exception as ex:
         log.warning("Shippo connection failed: %s" % ex)
         return None

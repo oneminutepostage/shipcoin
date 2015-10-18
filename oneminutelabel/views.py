@@ -65,10 +65,15 @@ def label(request):
             return HttpResponse(json.dumps(response), status="200")
         else:
             log.warning("Failed to charge on Stripe")
+            shippo_requestor.refund_label(shippo_label.object_id)
+            log.warning("Refunded label on Shippo")
             response = { "error": "We couldn't charge you for this label. Please verify your payment information and try again." }
             return HttpResponse(json.dumps(response), status="400")
     else:
         log.warning("Label creation failed: %s" % shippo_label)
-        response = { "error": shippo_label.messages }
+        if hasattr(shippo_label, "messages") and len(shippo_label.messages >= 1):
+            response = { "error": shippo_label.messages }
+        else:
+            response = { "error": "There was an error connecting to our label provider. Please try again or contact Shipcoin support." }
         return HttpResponse(json.dumps(response), status="400")
 
