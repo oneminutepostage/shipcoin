@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.views.decorators.http import require_POST, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import logging
@@ -12,7 +13,9 @@ import stripe_requestor
 log = logging.getLogger(__name__)
 
 def home(request):
-    context = { }
+    context = {
+        'STRIPE_PUBLISHABLE_TOKEN': settings.STRIPE_PUBLISHABLE_TOKEN
+    }
     return render(request, 'base.html', context)
 
 @csrf_exempt

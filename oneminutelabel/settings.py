@@ -95,16 +95,6 @@ LOGGING = {
     }
 }
 
-TEMPLATE_CONTEXT_PROCESSORS = ( 'oneminutelabel.context_processors.access_settings',
-                                'django.contrib.auth.context_processors.auth',
-                                'django.core.context_processors.debug',
-                                'django.core.context_processors.i18n',
-                                'django.core.context_processors.media',
-                                'django.core.context_processors.static',
-                                'django.core.context_processors.tz',
-                                'django.contrib.messages.context_processors.messages'
-                             )
-
 # API Tokens
 SHIPPO_TOKEN = os.getenv("SHIPPO_TOKEN")
 STRIPE_TOKEN = os.getenv("STRIPE_TOKEN")
