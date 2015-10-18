@@ -125,6 +125,6 @@ LOGGING = {
 
 # API Tokens
 
-SHIPPO_TOKEN = None
-STRIPE_TOKEN = None
+SHIPPO_TOKEN = os.getenv("SHIPPO_TOKEN")
+STRIPE_TOKEN = os.getenv("STRIPE_TOKEN")
 STRIPE_DESCRIPTION = "One Minute Label Postage"
