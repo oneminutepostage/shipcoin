@@ -129,6 +129,7 @@ LOGGING = {
 SHIPPO_TOKEN = os.getenv("SHIPPO_TOKEN")
 STRIPE_TOKEN = os.getenv("STRIPE_TOKEN")
 STRIPE_DESCRIPTION = "One Minute Label Postage"# Heroku
+# Heroku
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -137,5 +138,5 @@ DATABASES['default'] =  dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']"""
+ALLOWED_HOSTS = ['*']
 SSLIFY_DISABLE = os.getenv("SSLIFY_DISABLE", True)
