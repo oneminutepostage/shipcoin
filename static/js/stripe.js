@@ -12,7 +12,7 @@ $('#buy_button_stripe').on('click', function(e) {
   // Open Checkout with further options
   handler.open({
     name: 'Shipcoin',
-    description: 'Instant, discounted USPS labels',
+    description: 'USPS shipping label',
     amount: (rateAmount*100)
   });
   e.preventDefault();
