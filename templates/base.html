@@ -26,28 +26,28 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<nav class="navbar navbar-info" style="min-height:62px; box-shadow: 0 1px 6px 0 rgba(0,0,0,.12),0 1px 6px 0 rgba(0,0,0,.12);">
-		<div class="container-fluid">
-	    	<div class="navbar-header">
-	    		<a class="navbar-brand" href="#" style="padding-top:2px">
-	    			<table>
+
+	<div class="container">
+
+		<div style="border-bottom: 1px solid rgba(206, 206, 206, 0.35); margin-bottom: 20px; overflow: auto">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+					<table>
 	    				<tr>
-	    					<td><img alt="Shipcoin: USPS shipping labels with Bitcoin" src="{% static "img/shipcoin-inverse.png" %}" width="40"></td>
-							<td><h1 style="margin-top:10px; padding-left:10px;color:#fff">Shipcoin</h1></td>
+	    					<td style=""><img alt="Shipcoin: USPS shipping labels with Bitcoin" src="{% static "img/shipcoin.png" %}" width="40"></td>
+							<td><h1 style="margin-top:10px; padding-left:10px">Shipcoin</h1></td>
 						</tr>
 					</table>
-	    		</a>
-	    	</div>
-	    	<div class="pull-right hidden-xs" style="padding-top:20px; color:#fff">
-	    		Purchase discounted USPS shipping labels with Bitcoin.
-	    	</div>
-	    	<div class="visible-xs" style="padding:10px 0 15px 50px; color:#fff">
-	    		Purchase discounted USPS shipping labels with Bitcoin.
-	    	</div>
-	  	</div>
-	</nav>
-	
-	<div class="container">
+				</div>
+				<div class="text-right hidden-xs col-sm-4" style="padding-top:18px">
+		    		Purchase discounted USPS shipping labels with Bitcoin.
+		    	</div>
+		    	<div class="visible-xs" style="padding:5px 0 15px 20px">
+		    		Purchase discounted USPS shipping labels with Bitcoin.
+		    	</div>
+		    </div>
+		</div>
+
 		
 		<div id="content_outer" class="row">
 			<form id="labelForm" method="get" action="">
