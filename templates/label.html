@@ -40,8 +40,7 @@
                     		<td width="23%" style="padding-right: 5px;">
 		            			<select class="form-control changes_rates_field" id="fromState" name="fromState">
 						            <option selected disabled hidden value=''>State</option>
-						            <option>CA</option>
-						            <option>NY</option>
+						            {% include 'state_options.html' %}
 						        </select>
 		            		</td>
 		            		<td width="27%">
@@ -72,8 +71,7 @@
             		<td width="23%" style="padding-right: 5px;">
             			<select class="form-control changes_rates_field" name="toState">
 				            <option selected disabled hidden value=''>State</option>
-				            <option>CA</option>
-				            <option>NY</option>
+				            {% include 'state_options.html' %}
 				        </select>
             		</td>
             		<td width="27%">

@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Anonymously purchase discounted USPS shipping labels with Bitcoin.">
+	<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
+	<link rel="icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
 	<title>Shipcoin | USPS shipping labels paid with Bitcoin</title>
 	<!-- use the latest IE rendering mdoe -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,11 +26,29 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	<nav class="navbar navbar-info" style="min-height:62px; box-shadow: 0 1px 6px 0 rgba(0,0,0,.12),0 1px 6px 0 rgba(0,0,0,.12);">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	    		<a class="navbar-brand" href="#" style="padding-top:2px">
+	    			<table>
+	    				<tr>
+	    					<td><img alt="Shipcoin: USPS shipping labels with Bitcoin" src="{% static "img/shipcoin-inverse.png" %}" width="40"></td>
+							<td><h1 style="margin-top:10px; padding-left:10px;color:#fff">Shipcoin</h1></td>
+						</tr>
+					</table>
+	    		</a>
+	    	</div>
+	    	<div class="pull-right hidden-xs" style="padding-top:20px; color:#fff">
+	    		Purchase discounted USPS shipping labels with Bitcoin.
+	    	</div>
+	    	<div class="visible-xs" style="padding:10px 0 15px 50px; color:#fff">
+	    		Purchase discounted USPS shipping labels with Bitcoin.
+	    	</div>
+	  	</div>
+	</nav>
+	
 	<div class="container">
-		<div class="text-center">
-			<h1>Shipcoin</h1>
-			<p>Anonymously purchase discounted USPS shipping labels with Bitcoin.</p>
-		</div>
+		
 		<div id="content_outer" class="row">
 			<form id="labelForm" method="get" action="">
 			<div class="col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">

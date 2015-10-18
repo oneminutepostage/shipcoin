@@ -1,6 +1,6 @@
 var handler = StripeCheckout.configure({
   key: 'pk_test_EGy5lvIR91G9LihccXJ6fewV',
-  image: '/img/documentation/checkout/marketplace.png',
+  image: '/static/img/shipcoin.png',
   locale: 'auto',
   bitcoin: true,
   token: function(token) {
