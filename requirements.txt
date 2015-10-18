@@ -4,6 +4,7 @@ dj-database-url==0.3.0
 dj-static==0.0.6
 django-sslify==0.2.7
 gunicorn==19.1.1
+newrelic
 psycopg2==2.5.1
 shippo==1.1.0
 static==0.4

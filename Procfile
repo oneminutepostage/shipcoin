@@ -1,1 +1,1 @@
-web: gunicorn oneminutelabel.wsgi --log-file -
+web: newrelic-admin run-program gunicorn oneminutelabel.wsgi --log-file -

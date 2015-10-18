@@ -1,23 +1,11 @@
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f^#!hup+c&4nq)x_z&%9bb$5#2m*ya1)k611dzve3x2p=n^@2z'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY', 'f^#!hup+c&4nq)x_z&%9bb$5#2m*ya1)k611dzve3x2p=n^@2z')
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -41,37 +29,21 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'oneminutelabel.urls'
-
 WSGI_APPLICATION = 'oneminutelabel.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {'default': {}}
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
@@ -79,7 +51,6 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Logging
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -125,17 +96,20 @@ LOGGING = {
 }
 
 # API Tokens
-
 SHIPPO_TOKEN = os.getenv("SHIPPO_TOKEN")
 STRIPE_TOKEN = os.getenv("STRIPE_TOKEN")
-STRIPE_DESCRIPTION = "One Minute Label Postage"# Heroku
+STRIPE_DESCRIPTION = "One Minute Label Postage"
+
 # Heroku
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
+try:
+    from settings_local import *
+except:
+    pass
