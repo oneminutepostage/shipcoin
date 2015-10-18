@@ -11,8 +11,8 @@ var handler = StripeCheckout.configure({
 $('#buy_button_stripe').on('click', function(e) {
   // Open Checkout with further options
   handler.open({
-    name: 'One Minute Label',
-    description: 'Instant shipping label purchase',
+    name: 'Shipcoin',
+    description: 'Instant, discounted USPS labels',
     amount: (rateAmount*100)
   });
   e.preventDefault();
