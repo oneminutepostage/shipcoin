@@ -71,7 +71,7 @@ def label(request):
             return HttpResponse(json.dumps(response), status="400")
     else:
         log.warning("Label creation failed: %s" % shippo_label)
-        if hasattr(shippo_label, "messages") and len(shippo_label.messages >= 1):
+        if hasattr(shippo_label, "messages") and len(shippo_label.messages) >= 1:
             response = { "error": shippo_label.messages }
         else:
             response = { "error": "There was an error connecting to our label provider. Please try again or contact Shipcoin support." }
