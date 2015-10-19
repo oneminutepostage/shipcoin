@@ -9,7 +9,7 @@ function validateAddressGroup(fields){
 	var invalid_field_group = [];
 	$.each(fields, function(index, value){
 		value.removeClass("input-error");
-		if ( !(value.val()) ){
+		if ( !(value.val()) || (value.val() == "0") ){
 			valid = false;
 			value.addClass("input-error");
 			invalid_field_group.push(value);
