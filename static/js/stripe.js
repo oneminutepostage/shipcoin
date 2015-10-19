@@ -13,7 +13,7 @@ $('#buy_button_stripe').on('click', function(e) {
   handler.open({
     name: 'Shipcoin',
     description: 'USPS shipping label',
-    amount: (rateAmount*100)
+    amount: parseInt(rateAmount*100)
   });
   e.preventDefault();
 });
