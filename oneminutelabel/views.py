@@ -55,7 +55,10 @@ def label(request):
             tracking_number = shippo_label.tracking_number,
             label_url = shippo_label.label_url
             )
-        charged = stripe_requestor.charge(token, rate.amount)
+        # replace charged = True with the following line
+        # to actually charge the user
+        # charged = stripe_requestor.charge(token, rate.amount)
+        charged = True
         if charged:
             response = {
                 "label_url": shippo_label.label_url,
