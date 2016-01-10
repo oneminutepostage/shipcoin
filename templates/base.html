@@ -78,10 +78,12 @@
 		</div>
 	</div>
 	{% include 'label-modal.html' %}
+	{% include 'test-mode-modal.html' %}
 </body>
 <footer>
 	<script>
 		stripe_publishable_token = "{{ STRIPE_PUBLISHABLE_TOKEN }}";
+		$("#testModeModal").modal('show');
 	</script>
 	<script src="{% static "js/fields.js" %}?v=0.0.1"></script>
 	<script src="{% static "js/api.js" %}?v=0.0.1"></script>

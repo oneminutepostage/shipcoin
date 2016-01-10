@@ -9,12 +9,14 @@ var handler = StripeCheckout.configure({
 });
 
 $('#buy_button_stripe').on('click', function(e) {
-  // Open Checkout with further options
-  handler.open({
-    name: 'Shipcoin',
-    description: 'USPS shipping label',
-    amount: parseInt(rateAmount*100)
-  });
+  // Uncomment the following lines, and remove the sendLabelReuest
+  // function to activate the client-side Stripe code
+  //handler.open({
+  //  name: 'Shipcoin',
+  //  description: 'USPS shipping label',
+  //  amount: parseInt(rateAmount*100)
+  //});
+  sendLabelRequest("faketoken");
   e.preventDefault();
 });
 
